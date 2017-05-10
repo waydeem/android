@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Login Color Agecalc</string>
+    <string name="enter_your_login_and_password_which_equals_your_login">Enter your login and password, which equals your login</string>
+</resources>
