@@ -119,4 +119,40 @@ public class DataExtractor {
     public List<String> getCategories() {
         return categories;
     }
+    
+    public void setCategoriesSpinner(Spinner spinner) {
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+
+              //  mSpinner = (Spinner) findViewById(R.id.spinner);
+
+             //   System.out.println(mDataExtractor.getCategories() + "TATATATATTATA getCategory()");
+                
+                mHandler = new Handler() {
+                    @Override
+                    public void handleMessage(Message msg) {
+                        ArrayAdapter<String> msgAdapter = (ArrayAdapter<String>) msg.obj;
+                        mSpinner.setAdapter(msgAdapter);
+                        }
+                    };
+
+
+                ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(MainActivity.this,
+                        android.R.layout.simple_spinner_item, mDataExtractor.getCategories());
+
+                dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+                Message msg = new Message();
+                msg.obj = dataAdapter;
+
+                mHandler.sendMessage(msg);
+                
+                
+
+                System.out.println(mDataExtractor.getCategories() + "TATATATATTATA2");
+            }
+        });
+
+    }
 }
