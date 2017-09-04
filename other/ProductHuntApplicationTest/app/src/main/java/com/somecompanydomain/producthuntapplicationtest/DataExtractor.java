@@ -9,6 +9,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.OkHttpClient;
@@ -18,7 +19,7 @@ import okhttp3.Response;
 
 public class DataExtractor {
 
-    ArrayList<String> categories;
+    List<String> categories;
 
     OkHttpClient mClient;
   //  RequestBody mRequestBody;
@@ -29,7 +30,7 @@ public class DataExtractor {
     JSONObject mJSONObject;// = null;
     JSONArray mJSONArrayPosts;// = null;
 
-    public JSONArray getJSONArrayPosts() {
+    public JSONArray getJSONArrayPosts(String routePiece) {
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
@@ -37,7 +38,7 @@ public class DataExtractor {
                 try {
                     mClient = new OkHttpClient();
                     mRequest = new Request.Builder()
-                            .url("https://api.producthunt.com/v1/posts")
+                            .url("https://api.producthunt.com/v1/feed")
                             .addHeader("Accept", "application/json")
                             .addHeader("Content-Type", "application/json")
                             .addHeader("Authorization", "Bearer 591f99547f569b05ba7d8777e2e0824eea16c440292cce1f8dfb3952cc9937ff")
@@ -67,47 +68,10 @@ public class DataExtractor {
     }
 
 
-//    public JSONArray getJSONArrayPosts(String routePiece) {
-//        AsyncTask.execute(new Runnable() {
-//            @Override
-//            public void run() {
-//
-//                try {
-//                    mClient = new OkHttpClient();
-//                    mRequest = new Request.Builder()
-//                            .url("https://api.producthunt.com/v1/feed")
-//                            .addHeader("Accept", "application/json")
-//                            .addHeader("Content-Type", "application/json")
-//                            .addHeader("Authorization", "Bearer 591f99547f569b05ba7d8777e2e0824eea16c440292cce1f8dfb3952cc9937ff")
-//                            .addHeader("Host", "api.producthunt.com")
-//                            .build();
-//
-//                    mResponse = mClient.newCall(mRequest).execute();
-//                    String responseString = mResponse.body().string();
-//                    mJSONObject = new JSONObject(responseString);
-//                    mJSONArrayPosts = mJSONObject.getJSONArray("posts");
-//
-//                    System.out.println(responseString);
-//                    System.out.println(mResponse.headers());
-//                    System.out.println("\n\n " + mJSONArrayPosts);
-//                    Log.d(MainActivity.LOG_TAG, "POSTS ARRAY:  " + mJSONArrayPosts);
-//                } catch (IOException ioe) {
-//                    Log.d(MainActivity.LOG_TAG, "                           IOException ioe");
-//                } catch (JSONException joe) {
-//                    Log.d(MainActivity.LOG_TAG, "                           JSONException joe");
-//                }
-//
-//                System.out.println("YOU GOT BRAND NEW JSONOBJECT (DEFAULT CONSTRUCTOR)");
-//
-//            }
-//        });
-//        return mJSONArrayPosts;
-//    }
-
     public JSONArray getJSONArrayCategories() {
         categories = new ArrayList<>();
         executeAsyncTask("categories");
-
+        //notifyAll();
         return mJSONArrayPosts;
     }
 
@@ -143,18 +107,16 @@ public class DataExtractor {
                     System.out.println(responseString);
 
                 } catch (IOException ioe) {
-                    Log.d(MainActivity.LOG_TAG, "                           IOException ioe");
+                    ioe.printStackTrace();
                 } catch (JSONException joe) {
-                    Log.d(MainActivity.LOG_TAG, "                           JSONException joe");
+                    joe.printStackTrace();
                 }
-
-                System.out.println("YOU GOT CATEGORIES");
 
             }
         });
     }
 
-    public ArrayList<String> getCategories() {
+    public List<String> getCategories() {
         return categories;
     }
 }
