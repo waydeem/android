@@ -47,24 +47,25 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         mDataExtractor = new DataExtractor();
         categoryList = new ArrayList<>();
-
+        mSpinner = (Spinner) findViewById(R.id.spinner);
         super.onCreate(savedInstanceState);
 
-        mHandler = new Handler() {
-            @Override
-            public void handleMessage(Message msg) {
-                ArrayAdapter<String> msgAdapter = (ArrayAdapter<String>) msg.obj;
-                mSpinner.setAdapter(msgAdapter);
-            }
-        };
+//         mHandler = new Handler() {
+//             @Override
+//             public void handleMessage(Message msg) {
+//                 ArrayAdapter<String> msgAdapter = (ArrayAdapter<String>) msg.obj;
+//                 mSpinner.setAdapter(msgAdapter);
+//             }
+//         };
 
 
         setContentView(R.layout.activity_main);
-        mSpinner = (Spinner) findViewById(R.id.spinner);
+        
 
         //setCategoryList();
+        
         mDataExtractor.getJSONArrayCategories();
-        CustomAddValues();
+   //     CustomAddValues();
 
 
 //        System.out.println(categoryList + "TATATATATTATA3");
