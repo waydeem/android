@@ -13,6 +13,7 @@
         layout="@layout/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:visibility="visible"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -22,14 +23,38 @@
         android:id="@+id/spinner"
         android:layout_width="169dp"
         android:layout_height="31dp"
-        android:spinnerMode="dropdown"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="8dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/toolbar_my"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar_my"
+        android:layout_marginStart="20dp"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_my"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_my"
+        />
+
+    <!--   <android.support.v7.widget.Toolbar
+           android:id="@+id/toolbar2"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           android:background="?attr/colorPrimary"
+           android:minHeight="?attr/actionBarSize"
+           android:theme="?attr/actionBarTheme"
+           app:layout_constraintLeft_toLeftOf="parent"
+           app:layout_constraintRight_toRightOf="parent"
+           tools:layout_editor_absoluteY="104dp"/> -->
+
 
     <!-- android:entries="@array/student_class"
            android:prompt="@string/class_prompt" -->

@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
@@ -40,69 +42,61 @@ public class MainActivity extends AppCompatActivity {
     public static String LOG_TAG = "my_log";
     private Spinner mSpinner;
     private DataExtractor mDataExtractor;
-    private List<String> categoryList;
+//    private List<String> categoryList;
     private Handler mHandler;
+    private List<ProductCard> mProductCards;
+    private RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mDataExtractor = new DataExtractor();
-        categoryList = new ArrayList<>();
+//        categoryList = new ArrayList<>();
         mSpinner = (Spinner) findViewById(R.id.spinner);
+
+
+        setHandler();
         super.onCreate(savedInstanceState);
-
-//         mHandler = new Handler() {
-//             @Override
-//             public void handleMessage(Message msg) {
-//                 ArrayAdapter<String> msgAdapter = (ArrayAdapter<String>) msg.obj;
-//                 mSpinner.setAdapter(msgAdapter);
-//             }
-//         };
-
-
         setContentView(R.layout.activity_main);
-        
-
-        //setCategoryList();
-        
-        mDataExtractor.getJSONArrayCategories();
-   //     CustomAddValues();
 
 
-//        System.out.println(categoryList + "TATATATATTATA3");
+        LinearLayoutManager llm = new LinearLayoutManager(MainActivity.this);
+        mRecyclerView = (RecyclerView)findViewById(R.id.recycler_view);
+        mRecyclerView.setLayoutManager(llm);
 
-//        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                System.out.print("BRYYA BTYA");
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//                System.out.print("BRYYA");
-//            }
-//        });
+        initializeData();
+
+        RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(mProductCards);
+        mRecyclerView.setAdapter(recyclerViewAdapter);
 
 
-        // mSpinner.setOnItemSelectedListener();
-//        Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar_my);
-//        setSupportActionBar(myToolbar);
+        mDataExtractor.setCategories();
+        mDataExtractor.setPostsForCategory("Tech");
+        CustomAddValues();
 
 
-        //  mDataExtractor = new DataExtractor();
-
-        //mDataExtractor.getJSONArrayPosts();
 
     }
 
+    //test
+    private void initializeData(){
+        mProductCards = new ArrayList<>();
+        mProductCards.add(new ProductCard(R.drawable.pic100x100,"Product1", "Grtw tegdfg qq dfs qasdxzd", "100"));
+        mProductCards.add(new ProductCard(R.drawable.pic100x100,"Product12", "Zczxcvsdfsdf dfsc qwe", "100"));
+        mProductCards.add(new ProductCard(R.drawable.pic100x100,"Product123", "Asdasdqweqw easd", "100"));
+        mProductCards.add(new ProductCard(R.drawable.pic100x100,"Product123", "Asdasdqweqw easd", "100"));
+        mProductCards.add(new ProductCard(R.drawable.pic100x100,"Product123", "Asdasdqweqw easd", "100"));
+        mProductCards.add(new ProductCard(R.drawable.pic100x100,"Product123", "Asdasdqweqw easd", "100"));
+    }
+    //test
 
-    public void CustomAddValues() {
+    private void CustomAddValues() {
         AsyncTask.execute(new Runnable() {
             @Override
             public void run() {
 
                 mSpinner = (Spinner) findViewById(R.id.spinner);
 
-                System.out.println(mDataExtractor.getCategories() + "TATATATATTATA getCategory()");
+                //System.out.println(mDataExtractor.getCategories() + "TATATATATTATA getCategory()");
 
 
                 ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(MainActivity.this,
@@ -110,17 +104,33 @@ public class MainActivity extends AppCompatActivity {
 
                 dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
+
+//                RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(mProductCards);
+//                mRecyclerView.setAdapter(recyclerViewAdapter);
+
+
+
                 Message msg = new Message();
                 msg.obj = dataAdapter;
 
                 mHandler.sendMessage(msg);
-
-                System.out.println(mDataExtractor.getCategories() + "TATATATATTATA2");
             }
         });
+    }
 
+    private void setHandler() {
+        mHandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                ArrayAdapter<String> msgAdapter = (ArrayAdapter<String>) msg.obj;
+                mSpinner.setAdapter(msgAdapter);
+            }
+        };
     }
 }
+
+
+
 
 
 
