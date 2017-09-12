@@ -2,11 +2,9 @@ package com.somecompanydomain.producthuntapplicationtest;
 
 public class ProductCard {
 
-//    private String thumbnail;
+    private String thumbnail;
     private String productName;
     private String productDescription;
-//  private int upvotes;
-    private int thumbnail;
     private String upvotes;
 
 
@@ -18,18 +16,18 @@ public class ProductCard {
 //        this.upvotes = upvotes;
 //    }
 
-    public ProductCard(int thumbnail, String productName, String productDescription, String upvotes) {
+    public ProductCard(String thumbnail, String productName, String productDescription, String upvotes) {
         this.thumbnail = thumbnail;
         this.productName = productName;
         this.productDescription = productDescription;
         this.upvotes = upvotes;
     }
 
-    public int getThumbnail() {
+    public String getThumbnail() {
         return thumbnail;
     }
 
-    public void setThumbnail(int thumbnail) {
+    public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
     }
 

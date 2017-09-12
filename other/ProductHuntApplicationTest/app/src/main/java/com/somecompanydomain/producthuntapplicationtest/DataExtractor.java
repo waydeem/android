@@ -82,8 +82,10 @@ public class DataExtractor {
 
     public void setPostsForCategory(String category) {
         executeAsyncTask("categories/" + category.toLowerCase() + "/posts");
+    }
 
-
+    public JSONArray getPostsByCategory(String category) {
+        return receivedData.get(category);
     }
 
     private void executeAsyncTask(final String routePart) {
@@ -173,5 +175,9 @@ public class DataExtractor {
         });
         return msg;
 
+    }
+
+    public HashMap<String, JSONArray> getReceivedData() {
+        return receivedData;
     }
 }
