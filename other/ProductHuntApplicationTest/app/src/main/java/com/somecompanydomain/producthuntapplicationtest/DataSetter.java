@@ -10,6 +10,7 @@ import java.util.List;
 public class DataSetter {
     private List<ProductCard> productCardList;
     private DataExtractor dSDataExtractor = new DataExtractor();
+    
     private void processCategories(ArrayList<String> categories) {
 
     }
@@ -17,9 +18,11 @@ public class DataSetter {
     public void setProductCardList() {
         productCardList = new ArrayList<>();
         dSDataExtractor.setCategories();
+        dsDataExtractor.parseJSONPosts(dSDataExtractor.getCategories().get(0));
     }
+   
 
-    public void parseJSONPosts(String key){
+    private void parseJSONPosts(String key){
         JSONArray mJSONArray = dSDataExtractor.getPostsByCategory(key);
         for(int i = 0; i < mJSONArray.length(); i++) {
            // mThumbnail = mJSONArray.getJSONObject(i).getJSONObject("thumbnail").getString("image_url");
