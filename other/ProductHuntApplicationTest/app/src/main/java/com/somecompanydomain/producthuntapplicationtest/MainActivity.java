@@ -46,47 +46,43 @@ public class MainActivity extends AppCompatActivity {
     private Handler mHandler;
     private List<ProductCard> mProductCards;
     private RecyclerView mRecyclerView;
+    private DataSetter mDataSetter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mDataExtractor = new DataExtractor();
-//        categoryList = new ArrayList<>();
+        mDataSetter = new DataSetter();
         mSpinner = (Spinner) findViewById(R.id.spinner);
-
-
         setHandler();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         LinearLayoutManager llm = new LinearLayoutManager(MainActivity.this);
         mRecyclerView = (RecyclerView)findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(llm);
 
-        initializeData();
+        //initializeData();
 
         RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(mProductCards);
         mRecyclerView.setAdapter(recyclerViewAdapter);
 
-
-        mDataExtractor.setCategories();
-        mDataExtractor.setPostsForCategory("Tech");
+        mDataSetter.setProductCardList();
+        mDataSetter.parseJSONPosts("Tech");
+//        mDataExtractor.setCategories();
+//        mDataExtractor.setPostsForCategory("Tech");
         CustomAddValues();
-
-
-
     }
 
     //test
-    private void initializeData(){
-        mProductCards = new ArrayList<>();
-        mProductCards.add(new ProductCard(R.drawable.pic100x100,"Product1", "Grtw tegdfg qq dfs qasdxzd", "100"));
-        mProductCards.add(new ProductCard(R.drawable.pic100x100,"Product12", "Zczxcvsdfsdf dfsc qwe", "100"));
-        mProductCards.add(new ProductCard(R.drawable.pic100x100,"Product123", "Asdasdqweqw easd", "100"));
-        mProductCards.add(new ProductCard(R.drawable.pic100x100,"Product123", "Asdasdqweqw easd", "100"));
-        mProductCards.add(new ProductCard(R.drawable.pic100x100,"Product123", "Asdasdqweqw easd", "100"));
-        mProductCards.add(new ProductCard(R.drawable.pic100x100,"Product123", "Asdasdqweqw easd", "100"));
-    }
+//    private void initializeData(){
+//        mProductCards = new ArrayList<>();
+//        mProductCards.add(new ProductCard(R.drawable.pic100x100,"Product1", "Grtw tegdfg qq dfs qasdxzd", "100"));
+//        mProductCards.add(new ProductCard(R.drawable.pic100x100,"Product12", "Zczxcvsdfsdf dfsc qwe", "100"));
+//        mProductCards.add(new ProductCard(R.drawable.pic100x100,"Product123", "Asdasdqweqw easd", "100"));
+//        mProductCards.add(new ProductCard(R.drawable.pic100x100,"Product123", "Asdasdqweqw easd", "100"));
+//        mProductCards.add(new ProductCard(R.drawable.pic100x100,"Product123", "Asdasdqweqw easd", "100"));
+//        mProductCards.add(new ProductCard(R.drawable.pic100x100,"Product123", "Asdasdqweqw easd", "100"));
+//    }
     //test
 
     private void CustomAddValues() {

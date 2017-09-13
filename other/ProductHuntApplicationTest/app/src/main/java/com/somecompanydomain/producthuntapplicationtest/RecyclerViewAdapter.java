@@ -1,5 +1,6 @@
 package com.somecompanydomain.producthuntapplicationtest;
 
+import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -47,7 +48,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(ProductViewHolder productViewHolder, int i) {
-        productViewHolder.thumbnail.setImageResource(productCards.get(i).getThumbnail());
+        productViewHolder.thumbnail.setImageURI(Uri.parse(productCards.get(i).getThumbnail()));
+       // productViewHolder.thumbnail.setImageResource(productCards.get(i).getThumbnail());
         productViewHolder.productName.setText(productCards.get(i).getProductName());
         productViewHolder.productDescription.setText(productCards.get(i).getProductDescription());
         productViewHolder.upvotes.setText(productCards.get(i).getUpvotes());
