@@ -45,6 +45,9 @@ public class DataExtractor {
     }
 
     public JSONArray getPostsByCategory(String category) {
+        if(receivedData.get(category) == null) {
+            setPostsForCategory(category);   
+        }
         return receivedData.get(category);
     }
 
