@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(recyclerViewAdapter);
 
         mDataSetter.setProductCardList();
-        mDataSetter.parseJSONPosts("Tech");
+     //   mDataSetter.setProductCardList("Tech");
 //        mDataExtractor.setCategories();
 //        mDataExtractor.setPostsForCategory("Tech");
         CustomAddValues();

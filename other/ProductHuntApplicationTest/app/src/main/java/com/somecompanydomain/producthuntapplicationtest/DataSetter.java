@@ -5,11 +5,12 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DataSetter {
     private List<ProductCard> productCardList;
-    private HashMap<String, ProductCard> productCardLists;
+    //private HashMap<String, ProductCard> productCardLists;
     private DataExtractor dSDataExtractor = new DataExtractor();
     
     private void processCategories(ArrayList<String> categories) {
@@ -19,7 +20,12 @@ public class DataSetter {
     public void setProductCardList() {
         productCardList = new ArrayList<>();
         dSDataExtractor.setCategories();
-        dsDataExtractor.parseJSONPosts(dSDataExtractor.getCategories().get(0));
+        dSDataExtractor.setPostsForCategory(dSDataExtractor.getCategories().get(0));
+    }
+
+    public void setProductCardList(String category) {
+
+        dSDataExtractor.setPostsForCategory(category);
     }
    
         private void parseJSONPosts(String key){
@@ -27,7 +33,7 @@ public class DataSetter {
         for(int i = 0; i < mJSONArray.length(); i++) {
            // mThumbnail = mJSONArray.getJSONObject(i).getJSONObject("thumbnail").getString("image_url");
             try {
-            productCardLists.add(i, new ProductCard( //вот тут доделать помещение карточек в объект по ключику
+            productCardList.add(i, new ProductCard( //вот тут доделать помещение карточек в объект по ключику
                         mJSONArray.getJSONObject(i).getJSONObject("thumbnail").getString("image_url"),
                                 mJSONArray.getJSONObject(i).getString("name"),
                                 mJSONArray.getJSONObject(i).getString("tagline"),

@@ -26,6 +26,12 @@ public class DataExtractor {
 
     List<String> categories;
     HashMap<String,JSONArray> receivedData;
+
+    public HashMap<String, ProductCard> getProductCardLists() {
+        return productCardLists;
+    }
+
+    private HashMap<String, ProductCard> productCardLists;
     OkHttpClient mClient;
     Request mRequest;
     Response mResponse;
@@ -37,6 +43,7 @@ public class DataExtractor {
     public void setCategories() {
         categories = new ArrayList<>();
         receivedData = new HashMap<>();
+        productCardLists = new HashMap<>();
         executeAsyncTask("categories");
     }
 
@@ -75,17 +82,25 @@ public class DataExtractor {
                         mJSONArray = mJSONObject.getJSONArray(routePart);
                         for (int i = 0; i < mJSONArray.length(); i++) {
                             categories.add(i, mJSONArray.getJSONObject(i).getString("name"));
+                            productCardLists.put(categories.get(i), null);
                             receivedData.put(categories.get(i), null);
                             System.out.println(categories.get(i));
                         }
                     } else {
                         mJSONArray = mJSONObject.getJSONArray("posts");
-                        receivedData.put(routePart, mJSONObject.getJSONArray("posts"));
-
-                        System.out.println(routePart + " " + mJSONObject.getJSONArray("posts"));
+                        for(int i = 0; i < mJSONArray.length(); i++) {
+                            // mThumbnail = mJSONArray.getJSONObject(i).getJSONObject("thumbnail").getString("image_url");
+                            try {
+                                productCardLists.put(routePart, new ProductCard(
+                                        mJSONArray.getJSONObject(i).getJSONObject("thumbnail").getString("image_url"),
+                                        mJSONArray.getJSONObject(i).getString("name"),
+                                        mJSONArray.getJSONObject(i).getString("tagline"),
+                                        mJSONArray.getJSONObject(i).getString("votes_count"))
+                                );} catch (JSONException jOE2) {
+                                jOE2.printStackTrace();
+                            }
+                        }
                     }
-
-
                     System.out.println(responseString);
 
                 } catch (IOException iOE) {
@@ -135,4 +150,48 @@ public class DataExtractor {
     public HashMap<String, JSONArray> getReceivedData() {
         return receivedData;
     }
+
+//    private void executeAsyncTask(final String routePart) {
+//        AsyncTask.execute(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//                try {
+//                    mClient = new OkHttpClient();
+//                    mRequest = new Request.Builder()
+//                            .url("https://api.producthunt.com/v1/" + routePart)
+//                            .addHeader("Accept", "application/json")
+//                            .addHeader("Content-Type", "application/json")
+//                            .addHeader("Authorization", "Bearer 591f99547f569b05ba7d8777e2e0824eea16c440292cce1f8dfb3952cc9937ff")
+//                            .addHeader("Host", "api.producthunt.com")
+//                            .build();
+//
+//                    mResponse = mClient.newCall(mRequest).execute();
+//                    String responseString = mResponse.body().string();
+//                    mJSONObject = new JSONObject(responseString);
+//
+//
+//                    if(routePart.equals("categories")) {
+//                        mJSONArray = mJSONObject.getJSONArray(routePart);
+//                        for (int i = 0; i < mJSONArray.length(); i++) {
+//                            categories.add(i, mJSONArray.getJSONObject(i).getString("name"));
+//                            receivedData.put(categories.get(i), null);
+//                            System.out.println(categories.get(i));
+//                        }
+//                    } else {
+//                        mJSONArray = mJSONObject.getJSONArray("posts");
+//                        receivedData.put(routePart, mJSONObject.getJSONArray("posts"));
+//
+//                        System.out.println(routePart + " " + mJSONObject.getJSONArray("posts"));
+//                    }
+//                    System.out.println(responseString);
+//
+//                } catch (IOException iOE) {
+//                    iOE.printStackTrace();
+//                } catch (JSONException jOE) {
+//                    jOE.printStackTrace();
+//                }
+//            }
+//        });
+//    }
 }
