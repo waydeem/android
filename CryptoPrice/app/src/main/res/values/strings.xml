@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">Crypto Price</string>
-    <string name="label_default_text">N\A</string>
+    <string name="label_default_text">N\\A</string>
     <string name="label_error_text">Error</string>
     <string name="base">Выбранная валюта</string>
+    <string name="ask">К</string>
+    <string name="bid">П</string>
+    <string name="tip_for_a">К - купля</string>
+    <string name="tip_for_b">П - продажа</string>
     <string name="imageview_desc">Cryptocurrency Logo</string>
     <string name="btc_name">Bitcoin</string>
     <string name="eth_name">Ethereum</string>

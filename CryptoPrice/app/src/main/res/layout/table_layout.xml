@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tableLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:shrinkColumns="*"
+    android:stretchColumns="*">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView/>
+
+        <ImageView
+            android:id="@+id/btcLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/imageview_desc"
+            android:src="@drawable/btc100"/>
+
+        <ImageView
+            android:id="@+id/ethLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/imageview_desc"
+            android:src="@drawable/eth100"/>
+
+        <ImageView
+            android:id="@+id/ltcLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/imageview_desc"
+            android:src="@drawable/ltc100"/>
+
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10sp"
+        android:layout_marginTop="10sp">
+
+        <TextView
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/btcName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/btc_name"
+            android:textColor="@color/fontColour"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/ethName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/eth_name"
+            android:textColor="@color/fontColour"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/ltcName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/ltc_name"
+            android:textColor="@color/fontColour"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10sp"
+        android:layout_marginTop="10sp">
+
+        <TextView
+            android:id="@+id/ask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/ask"
+            android:textColor="@color/fontColour"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/btcPriceAsk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/label_default_text"
+            android:textColor="@color/fontColour"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/ethPriceAsk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/label_default_text"
+            android:textColor="@color/fontColour"
+            android:textSize="18sp"
+            />
+
+
+        <TextView
+            android:id="@+id/ltcPriceAsk"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/label_default_text"
+            android:textColor="@color/fontColour"
+            android:textSize="18sp"
+            />
+
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10sp"
+        android:layout_marginTop="10sp">
+
+        <TextView
+            android:id="@+id/bid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/bid"
+            android:textColor="@color/fontColour"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/btcPriceBid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/label_default_text"
+            android:textColor="@color/fontColour"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:id="@+id/ethPriceBid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/label_default_text"
+            android:textColor="@color/fontColour"
+            android:textSize="18sp"
+            />
+
+
+        <TextView
+            android:id="@+id/ltcPriceBid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/label_default_text"
+            android:textColor="@color/fontColour"
+            android:textSize="18sp"
+            />
+
+    </TableRow>
+</TableLayout>
