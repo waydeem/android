@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
 
-    android:textSize="16sp"
+    android:textSize="17.5sp"
     android:textStyle="bold"
     android:textColor="@color/fontColour"
     android:text="@string/label_error_text"

@@ -11,13 +11,43 @@
     android:background="@drawable/background"
     tools:context="com.somecompanydomain.cryptoprice.MainActivity">
 
+    <FrameLayout
+        android:id="@+id/progressBarHolder"
+        android:animateLayoutChanges="true"
+        android:visibility="gone"
+        android:alpha="0.4"
+        android:background="#000000"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:layout_gravity="center" />
+
+    </FrameLayout>
+
     <LinearLayout
         android:id="@+id/tipsLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/tableLayout"
+        android:layout_marginTop="15dp"
         android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/currentTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="0"
+            android:text="@string/for_current_time"
+            android:textColor="@color/fontColour"
+            android:textSize="16sp"/>
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -43,18 +73,17 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/fontColour"
                 android:textSize="22sp"
-                android:textStyle="bold"
                 />
 
             <Spinner
                 android:id="@+id/currency_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="1.9dp"
                 android:backgroundTint="@android:color/white"
                 android:dropDownSelector="@color/fontColour"
                 android:gravity="center_horizontal"
                 android:spinnerMode="dropdown"/>
-
 
         </LinearLayout>
 
@@ -71,8 +100,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/tip_for_b"
-            android:textSize="15sp"
-            android:textColor="@color/fontColour"/>
+            android:textColor="@color/fontColour"
+            android:textSize="15sp"/>
 
     </LinearLayout>
 

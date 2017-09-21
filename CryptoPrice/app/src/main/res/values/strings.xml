@@ -11,6 +11,9 @@
     <string name="btc_name">Bitcoin</string>
     <string name="eth_name">Ethereum</string>
     <string name="ltc_name">Litecoin</string>
+    <string name="for_current_time">На </string>
+    <string name="public_key">OTkwZTdlMTAwMmU3NGNmNmJjNjhjMTc2YTc0NDIyMTM</string>
+    <string name="secret_key">Y2I3YWQ2YzFmMmU1NDQ0OWE1MjZiOTMzMWJkNjY0ZmQyMjljZWExYzhiZmY0MTg1YWY2MzU0Zjk5ZGExYzIzZA</string>
 
     <string-array name="currency_array">
         <item>AUD</item>
